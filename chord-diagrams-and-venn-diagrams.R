@@ -183,6 +183,79 @@ plot(sp_euler,  counts = T, fontface = 1)
 
 
 
+#----- Data Scientist Venn Diagram -----#
+# Another great example 
+# Theory: https://rstudio-pubs-static.s3.amazonaws.com/13301_6641d73cfac741a59c0a851feb99e98b.html
+# Practice: https://datascience.stackexchange.com/questions/2403/data-science-without-knowledge-of-a-specific-topic-is-it-worth-pursuing-as-a-ca
+
+draw.ellipse <- function(center,angle,semimajor,semiminor,radius,h,s,v,...) {
+  shape <- rbind(c(cos(angle),-sin(angle)),c(sin(angle),cos(angle))) %*% diag(c(semimajor,semiminor))
+  tt <- seq(0,2*pi,length.out=1000)
+  foo <- matrix(center,nrow=2,ncol=length(tt),byrow=FALSE) + shape%*%(radius*rbind(cos(tt),sin(tt)))
+  polygon(foo[1,],foo[2,],col=hsv(h,s,v,alpha=0.5),border="black",...)
+}
+name <- function(x,y,label,cex=1.2,...) text(x,y,label,cex=cex,...)
+
+# png("Venn.png",width=600,height=600)
+par(mai=c(0,0,0,0),lwd=1,font=3.5)
+plot(c(0,100),c(0,90),type="n",bty="n",xaxt="n",yaxt="n",xlab="",ylab="") %>% par(opar)
+draw.ellipse(center=c(30,30),angle=0.75*pi,semimajor=2,semiminor=1,radius=20,h=60/360,s=.068,v=.976)
+draw.ellipse(center=c(70,30),angle=0.25*pi,semimajor=2,semiminor=1,radius=20,h=83/360,s=.482,v=.894)
+draw.ellipse(center=c(48,40),angle=0.7*pi,semimajor=2,semiminor=1,radius=20,h=174/360,s=.397,v=.8)
+draw.ellipse(center=c(52,40),angle=0.3*pi,semimajor=2,semiminor=1,radius=20,h=200/360,s=.774,v=.745)
+
+name(50,90,"The Data Scientist Venn Diagram",pos=1,cex=2)
+name(8,62,"Communi-\ncation",cex=1.5,pos=3)
+name(30,78,"Statistics",cex=1.5)
+name(70,78,"Programming",cex=1.5)
+name(92,62,"Business",cex=1.5,pos=3)
+
+name(10,45,"Hot\nAir")
+name(90,45,"The\nAccountant")
+name(33,65,"The\nData\nNerd")
+name(67,65,"The\nHacker")
+name(27,50,"The\nStats\nProf")
+name(73,50,"The\nIT\nGuy")
+name(50,55,"R\nCore\nTeam")
+name(38,38,"The\nGood\nConsultant")
+name(62,38,"Drew\nConway's\nData\nScientist")
+name(50,24,"The\nperfect\nData\nScientist!")
+name(31,18,"Comp\nSci\nProf")
+name(69,18,"The\nNumber\nCruncher")
+name(42,11,"Head\nof IT")
+name(58,11,"Ana-\nlyst")
+name(50,5,"The\nSalesperson")
+
+
+
+
+
+
+
+
+
+#----- Correlation matrix / heatmap -----#
+# From: http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software
+
+data("mtcars")
+my_data <- mtcars[, c(1,3,4,5,6,7)]
+
+res <- cor(my_data)
+round(res, 2)
+
+
+
+library(corrplot)
+corrplot(res, type = "full", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+
+
+
+
+
+
+
+
 
 
 
