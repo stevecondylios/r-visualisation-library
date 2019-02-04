@@ -336,6 +336,33 @@ coord_map()
 
 
 
+# Can we replicate this with Australian states ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#--- Follow up reading ---#
+
+
+# ggplot2
+# Here: https://www.r-graph-gallery.com/portfolio/ggplot2-package/
+
+
+
+# Circle packing
+# here: https://www.r-graph-gallery.com/circle-packing/
+
+
 
 
 
