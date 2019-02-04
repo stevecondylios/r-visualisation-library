@@ -307,7 +307,7 @@ ggplot() +
   coord_map()
 
 
-library(viridis) # Required for scale_fill_viridis
+library(viridis) # Required for scale_fill_viridis # Very nice colour palettes: Read: https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
 p <- ggplot() +
   geom_polygon(data = spdf_fortified, aes(fill = nb_equip, x = long, y = lat, group = group) , size=0, alpha=0.9) +
   theme_void() +
