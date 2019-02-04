@@ -331,6 +331,7 @@ theme(
 ) +
 coord_map()
 
+# ggplot2 notes:
 
 
 
